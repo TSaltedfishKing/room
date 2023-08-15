@@ -52,6 +52,16 @@ void PrintPlayerCount() {
 	}
 	fout.close();
 }
+bool isPlayerContainTag(Player* player, string tag) {
+	auto tags = player->getTags();
+	for (size_t i = 0; i < tags.size(); i++)
+	{
+		if (tags[i] == "fmd") {
+			return true;
+		}
+	}
+	return false;
+}
 /**
  * @brief The entrypoint of the plugin. DO NOT remove or rename this function.
  *
@@ -149,12 +159,13 @@ void PluginInit()
 					{
 						if (_roomInfoList[j].subroomInfo[k].aabbPosition.contains(player->getAABB())) {
 							if (_roomInfoList[j].maxSubRoomPlayerCount < _roomInfoList[j].subroomInfo[k].playerCount) {
-								if (player->isOperator()) {
+								if (isPlayerContainTag(player, "fmd")) {
 									player->sendPlaySoundPacket("mob.villager.no", player->getPos(), 1, 1);
-									player->sendText("副本人数已满 但由于您是管理员，已被豁免 使用roomjoin指令可以在人满的时候传送至等候区");
+									player->sendText("副本人数已满 但由于您具有“fmd”标签，已被豁免 使用roomjoin指令可以在人满的时候传送至等候区");
 								}
 								else
 								{
+									
 									player->sendPlaySoundPacket("mob.villager.no", player->getPos(), 1, 1);
 									player->sendText("副本人数已满 正在传送至 " + std::to_string(_roomInfoList[j].roomId) + " 的等候区");
 									Global<Level>->executeCommand("tp " + player->getName() + " " + std::to_string(_roomInfoList[j].waitingPosition.x) + " " + std::to_string(_roomInfoList[j].waitingPosition.y) + " " + std::to_string(_roomInfoList[j].waitingPosition.z));

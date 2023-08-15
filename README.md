@@ -25,7 +25,7 @@
 ### 特殊事件
 当玩家加入服务器时，如果区域恰好为副本，那么玩家将会传送至副本的等候区内
 
-特别的，当玩家为管理员时，玩家不会被传送，如果需要传送至等候区，可以尝试使用roomjoin来传送
+特别的，当玩家具有`fmd`的tag时，玩家不会被传送，如果需要传送至等候区，可以尝试使用roomjoin来传送
 ## License
 This repository is open source under the Apache License Version 2.0, January 2004.
 
