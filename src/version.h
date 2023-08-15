@@ -5,7 +5,7 @@
  */
 
 #pragma once
-
+#include <string>
 #define PLUGIN_VERSION_DEV 0
 #define PLUGIN_VERSION_BETA 1
 #define PLUGIN_VERSION_RELEASE 2
@@ -18,16 +18,15 @@
 // Please FILL UP the content in this area before developing your plugin, and DO NOT modify any code
 // outside this area.
 
-static_assert(false, "Please modify your plugin information below and delete this line!");
 
 // The basic descriptions of your plugin
 // Note that the the plugin name CAN ONLY CONTAIN Enlish alphabet, digit, dash(-) and
 // underscore(_). 
-#define PLUGIN_NAME "HelloWorldPrinter"
+#define PLUGIN_NAME "room"
 // Describe what your plugin does
 // We recommend you start the introduction with a third-person singular verb.
-#define PLUGIN_INTRODUCTION "Prints \"Hello, World!\" in the console."
-#define PLUGIN_AUTHOR "Me"
+#define PLUGIN_INTRODUCTION "Provide room select functions. See more at https://github.com/kioskrpg/room"
+#define PLUGIN_AUTHOR "TSaltedfishKing"
 
 // The version of your plugin. If you do not know how to set it, please refer
 // to https://semver.org/ .
@@ -45,7 +44,7 @@ static_assert(false, "Please modify your plugin information below and delete thi
 // please start the latest version of LiteLoaderBDS and get the protocol version.
 // If you are confident about the version compatibility of your plugin, you can
 // just comment this line (NOT RECOMMENDED).
-#define TARGET_BDS_PROTOCOL_VERSION 582
+#define TARGET_BDS_PROTOCOL_VERSION 594
 
 // ***************************************************************************************
 // ***************************************************************************************
@@ -87,3 +86,6 @@ static_assert(false, "Please modify your plugin information below and delete thi
 #define FILE_VERSION_PRODUCT_VERSION_STRING PLUGIN_FILE_VERSION_STRING
 #define FILE_VERSION_FILE_VERSION PLUGIN_VERSION_MAJOR, PLUGIN_VERSION_MINOR, PLUGIN_VERSION_REVISION, PLUGIN_VERSION_BUILD
 #define FILE_VERSION_PRODUCT_VERSION FILE_VERSION_FILE_VERSION
+
+const std::string PLUGIN_CONFG_PATH = "plugins/room/";
+const std::string PLUGIN_CONFG_FILE = "plugins/room/room.ini";
