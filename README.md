@@ -12,8 +12,8 @@
 
 * Set.waitingPosition
 * Set.checkpoint
-* Set.postionA
-* Set.postionB
+* Set.positionA
+* Set.positionB
 
 **修改/创建配置类**
 

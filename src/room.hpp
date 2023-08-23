@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _ROOM_HPP_
-#define _ROOM_HPP_
+#ifndef ROOM_HPP_
+#define ROOM_HPP_
 
 #include <llapi/mc/Vec3.hpp>
 #include <llapi/mc/AABB.hpp>
@@ -25,7 +25,7 @@ struct RoomInfo {
 namespace Room {
 
 	//插件初始化
-	void RoomInitalize();
+	void roomInitalize();
 
 	std::vector<RoomInfo> GetAllRoomInfo();
 	std::vector<SubRoomInfo> GetAllSubRoomInfo(int room_id);
@@ -33,19 +33,19 @@ namespace Room {
 	Vec3 GetSubRoomCheckPoint(int ID, int ID_SUB);
 	bool RoomExists(int ID);
 	bool RoomExists(int ID, int ID_SUB);
-	bool SetRoomInfo(int ID, string description);
+	bool SetRoomInfo(int ID, const string& description);
 	bool SetRoomInfo(int ID, int maxSubRoomPlayerCount);
 	bool SetRoomInfo(int ID, Vec3 waitingPosition);
-	bool SetRoomInfo(int ID, string description, Vec3 waitingPosition, std::vector<SubRoomInfo> subroomInfo);
-	bool SetRoomInfo(int ID, string description, std::vector<SubRoomInfo> subroomInfo);
-	bool SetRoomInfo(int ID, Vec3 waitingPosition, std::vector<SubRoomInfo> subroomInfo);
-	bool SetSubRoomInfo(int ID, int ID_SUB, Vec3 checkpoint, Vec3 postionA, Vec3 postionB);
+	bool SetRoomInfo(int ID, const string& description, Vec3 waitingPosition);
+	bool SetRoomInfo(int ID, const string& description);
+	bool SetRoomInfo(int ID, Vec3 waitingPosition);
+	bool SetSubRoomInfo(int ID, int ID_SUB, Vec3 checkpoint, Vec3 positionA, Vec3 positionB);
 	bool SetSubRoomInfo(int ID, int ID_SUB, Vec3 checkpoint);
-	bool SetSubRoomInfo(int ID, int ID_SUB, Vec3 postionA, Vec3 postionB);
+	bool SetSubRoomInfo(int ID, int ID_SUB, Vec3 positionA, Vec3 positionB);
 	bool CreateRoom(int ID);
 	bool CreateRoom(int ID, string description);
-	bool CreateRoom(int ID, string description, Vec3 waitingPostion);
-	bool CreateSubRoom(int ID, int ID_SUB, Vec3 checkpoint, Vec3 postionA, Vec3 postionB);
+	bool CreateRoom(int ID, string description, Vec3 waitingPosition);
+	bool CreateSubRoom(int ID, int ID_SUB, Vec3 checkpoint, Vec3 positionA, Vec3 positionB);
 	bool DeleteRoom(int ID);
 	bool DeleteSubRoom(int ID, int ID_SUB);
 	
@@ -56,4 +56,4 @@ namespace RoomInfoController {
 	int GetBestSubRoom(std::vector<RoomInfo> roomInfoList, int ID);
 	int GetRoomInfoIndex(std::vector<RoomInfo> roomInfoList, int room_id);
 }
-#endif // !_ROOM_HPP_
+#endif // ROOM_HPP_

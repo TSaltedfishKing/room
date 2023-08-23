@@ -1,6 +1,5 @@
 #include "convert.hpp"
 #include <windows.h>
-#include <locale.h>
 std::string Vec3ToString(const Vec3& vec) {
 	std::stringstream ss;
 	ss << "(" << std::fixed << std::setprecision(2) << vec.x << ", " << vec.y << ", " << vec.z << ")";
@@ -12,14 +11,14 @@ Vec3 StringToVec3(const std::string& str) {
 	std::istringstream iss(str);
 	char discard;
 
-	iss >> discard; // Discard the opening parenthesis '('
+	iss >> discard;
 	float floatX, floatY, floatZ;
 	iss >> floatX;
-	iss >> discard; // Discard the comma ','
+	iss >> discard;
 	iss >> floatY;
-	iss >> discard; // Discard the comma ','
+	iss >> discard;
 	iss >> floatZ;
-	iss >> discard; // Discard the closing parenthesis ')'
+	iss >> discard;
 
 	vec.x = floatX;
 	vec.y = floatY;
@@ -31,7 +30,7 @@ Vec3 StringToVec3(const std::string& str) {
 
 const wchar_t* StringToWideString(const std::string& str) {
 	int string_length = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, nullptr, 0);
-	wchar_t* wideStr = new wchar_t[string_length];
+	auto* wideStr = new wchar_t[string_length];
 	MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, wideStr, string_length);
 	return wideStr;
 }
